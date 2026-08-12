@@ -1,9 +1,9 @@
 package com.app.Understanding_Package_Declarations_and_Imports.Redundant_Imports;
 
-import java.lang.System; //redundate
-import java.lang.*;     //redundante
-import java.util.*;
-import java.util.Random; //redundante  
+import java.lang.System; 
+import java.lang.*;     //redundante, hace uso System y con el comodin ya está importando denuevo esa clase
+import java.util.*;     //redundante  
+import java.util.Random; 
 
 public class ImportExample {
     public static void main(String[] args) {
