@@ -53,6 +53,7 @@ public class Overloading_Methods {
         overloading_Methods.Autoboxing();
         overloading_Methods.Reference_Types();
         overloading_Methods.Primitives();
+        overloading_Methods.Putting_It_All_Together();
     }
 
     public void Overloading_and_Varargs(){
@@ -132,5 +133,56 @@ public class Overloading_Methods {
 
         //La respuesta es int long. La primera llamada pasa un int y encuentra una coincidencia exacta.
         //La segunda llamada pasa un long y también encuentra una coincidencia exacta
+
+        //Si comentamos el método sobrecargado con la lista de parámetros int,la salida se vuelve long long.
+        //A Java no le cuesta llamar a un primitivo más grande.
+        //Sin embargo, no lo hará a menos que no se encuentre una mejor coincidencia
+
+        //Ten en cuenta que Java solo puede aceptar tipos más amplios.
+        //Un int se puede pasar a un método que toma un parámetro long.
+        //Java no convertirá automáticamente a un tipo más estrecho.
+        //Si quieres pasar un long a un método que toma un parámetro int,
+        //tienes que agregar un cast para decir explícitamente que reducir el tipo está bien.
+    }
+
+    public void Putting_It_All_Together(){
+        //Juntandolo todo, ahora indicar que sale en este ejemplo:
+        /* public class Glider2 {
+            public static String glide(String s) {
+                return "1";
+            }
+            public static String glide(String... s) {
+                return "2";
+            }
+            public static String glide(Object o) {
+                return "3";
+            }
+            public static String glide(String s, String t) {
+                return "4";
+            }
+            public static void main(String[] args) {
+                System.out.print(glide("a"));       //1
+                System.out.print(glide("a", "b"));  //4
+                System.out.print(glide("a", "b", "c")); //2     //varags
+            }
+        } */
+
+        //EL RESULTADO SERÍA 142
+
+        //TENER EN CUENTA QUE POR MUY FLEXIBLE QUE SEA JAVA, SOLO VA HACER UNA CONVERSIÓN:
+
+        /* public class TooManyConversions {
+            public static void play(Long l) { }
+            public static void play(Long... l) { }
+            public static void main(String[] args) {
+                play(4);     // NO COMPILA
+                play(4L);     // por autoboxing usa el primer metodo
+            } 
+        } */
+
+        //A Java le gusta convertir el int 4 a un long 4 o a un Integer 4.
+        // Pero NO puede manejar la conversión en dos pasos a un long y luego a un Long. (SOLO PUEDE HACER UNA CONVERSION)
+        //Si tuviéramos public static void play(Object o) { },
+        //funcionaría porque solo sería necesaria una conversión: de int a Integer. Un Integer es un Object
     }
 }
