@@ -47,6 +47,12 @@ public class Understanding_Equality {
                 System.out.println(t1.equals(t2)); // false     //TIGER NO IMPLEMENTA EQUALS
             }
         }
+
+        //LA ULTIMA DA FALSE, PORQUE equals(), no se encuentra sobreescrito en la clase Tiger.
+        // Tiger no define su propio método equals()
+        //Y como no se encuentra sobreescrito
+        //UTILIZA EL equals() DE LA CLASE OBJECT. En la cual, este método de Object, equals(),simplemente hace lo mismo 
+        //que == , es decir compara si son la misma referencia, el mismo objeto en memoria. POR ELLO DA FALSE.
     }
     
 }
