@@ -177,6 +177,66 @@ public class Writing_Simple_Lambdas {
     }
 
     public void Predicates(){
-        
+        //En nuestro ejemplo anterior, creamos una interfaz con un método: 
+        // boolean test(Animal a);
+
+        //Las lambdas funcionan con interfaces que tienen un solo método.
+        //Estas se llaman interfaces funcionales, interfaces que se pueden usar con programación funcional.
+
+        //Si es así, entonces tendríamos que crear muchas interfaces así para usar lambdas?
+        //Por suerte,NO. Java reconoce que este es un problema común y nos proporciona tal interfaz.
+        //Está en el paquete java.util.function y la idea general es la siguiente:
+
+        /*public interface Predicate<T> {
+            boolean test(T t);
+        }*/
+
+        //Se parece mucho al método hecho anteriormente. La única diferencia es que usa este tipo T en lugar de Animal.
+        //Esa es la sintaxis para genéricos. Es como cuando creamos un ArrayList y podíamos especificar cualquier tipo que iba en él.
+        //Esto significa que ya no necesitamos nuestra propia interfaz y podemos poner todo lo relacionado con nuestra
+        //búsqueda en una sola clase:
+
+        /* import java.util.*;
+        import java.util.function.*;
+        public class PredicateSearch {
+            public static void main(String[] args) {
+                List<Animal> animals = new ArrayList<Animal>();
+                animals.add(new Animal("fish", false, true));
+                print(animals, a -> a.canHop());
+            }
+            
+            private static void print(List<Animal> animals, Predicate<Animal> checker) {
+                for (Animal animal : animals) {
+                    if (checker.test(animal))
+                        System.out.print(animal + " ");
+                }
+                System.out.println();
+                
+            }
+            
+        } */
+
+        //AHORA LA LINEA DE CODIGO QUE CONTIENEN private static void print(List<Animal> animals, Predicate<Animal> checker) {
+        //ES LA QUE CAMBIÓ, YA QUE AHORA SE LE VA PASAR PREDICATE QUE USA EL TIPO ANIMAL
+
+        //Java 8 incluso integró la interfaz Predicate en algunas clases existentes.
+        //Solo hay una que necesitas conocer para el examen. ArrayList declara un método removeIf() que toma un Predicate.
+        //Imagina que tenemos una lista de nombres de conejitos de mascota.
+        //Decidimos que queremos eliminar todos los nombres de conejos que no empiecen con la letra h
+        //porque a nuestro pequeño primo realmente quiere que elijamos un nombre con H.
+        //Podríamos resolver este problema escribiendo un bucle. O podríamos resolverlo en una sola línea:
+
+        List<String> bunnies = new ArrayList<>();
+        bunnies.add("long ear");
+        bunnies.add("floppy");
+        bunnies.add("hoppy");
+        System.out.println(bunnies);     // [long ear, floppy, hoppy]
+        bunnies.removeIf(s -> s.charAt(0) != 'h');      //SE TOMA COMO SI FUERA UNA CONDICIÓN EL LAMBDA
+        System.out.println(bunnies);     // [hoppy]
+
+        //Para el examen OCA, solo necesitas saber cómo implementar expresiones lambda que usen la interfaz Predicate.
+        //¿Recuerdas el único método en la interfaz llamado test()? 
+        //Toma cualquier parámetro de tipo referencia y devuelve un booleano. 
+        //La programación funcional es un tema grande y aquí solo se cubren los conceptos básicos.
     }
 }
