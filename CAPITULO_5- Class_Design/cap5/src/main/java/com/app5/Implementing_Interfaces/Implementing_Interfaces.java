@@ -276,7 +276,62 @@ public class Implementing_Interfaces {
         //La clase que implementa ambas interfaces debe proporcionar implementaciones de ambas versiones 
         //de eatPlants(), ya que se consideran métodos separados. 
 
+        //Observa que NO IMPORTA SI EL TIPO DE RETORNO DE LOS DOS MÉTODOS ES EL MISMO O DIFERENTES,
+        //porque el compilador trata estos métodos como independientes. 
 
+        //TENER EN CUENTA QUE:
+        //Desafortunadamente, si el nombre del método y los parámetros de entrada son los mismos pero
+        //los tipos de retorno son diferentes entre los dos métodos, la clase o interfaz que intenta heredar ambas
+        //interfaces no se compilará.
+
+        //No es posible en Java definir dos métodos en una clase con el mismo nombre y parámetros de entrada
+        //pero con diferentes tipos de retorno
+
+        //EJEMPLO:
+
+        /* public interface Herbivore {        //INTERFACE
+            public int eatPlants();
+        }
+        public interface Omnivore {     //INTERFACE
+            public void eatPlants();
+        }
+        public class Bear implements Herbivore, Omnivore {      //SE IMPLEMENTA INTERFACES Herbivore, Omnivore
+            public int eatPlants() {  // NO SE COMPILA
+                System.out.println("Eating plants: 10");
+                return 10;
+            }
+            public void eatPlants() {  // NO SE COMPILA
+                System.out.println("Eating plants");
+            }
+        } */
+
+        //El código no se compila, ya que la clase define dos métodos con el mismo nombre y parámetros de entrada
+        //pero diferentes tipos de retorno.
+        
+        //Si elimináramos cualquiera de las definiciones de eatPlants(), el compilador se detendría porque a la
+        //definición de Bear le faltaría uno de los métodos requeridos.
+        
+        //En otras palabras,no hay una implementación de la clase Bear que herede de Herbívoro y Omnívoro que el compilador acepte
+        
+
+
+        //ADEMÁS, el compilador también lanzaría una excepción si defines una interfaz o clase abstracta 
+        //que herede de dos interfaces conflictivas. EJM:
+
+        /* public interface Herbivore {    //INTERFACE
+            public int eatPlants();
+        }
+        public interface Omnivore {         //INTERFACE
+            public void eatPlants();
+        }
+        public interface Supervore extends Herbivore, Omnivore {} // NO COMPILA POR LOS METODOS QUE TIENE MISMA FIRMA Y DIFERENTES TIPO DE RETORNO
+        public abstract class AbstractBear implements Herbivore, Omnivore {} // NO COMPILA
+         */
+
+        //Incluso sin detalles de implementación, el compilador detecta el problema con la definición
+        //abstracta y evita la compilación.
+
+        //LUEGO SE VERÁN LOS MÉTODOS DE INTERFACE POR DEFECTO.
     }
 
 }
