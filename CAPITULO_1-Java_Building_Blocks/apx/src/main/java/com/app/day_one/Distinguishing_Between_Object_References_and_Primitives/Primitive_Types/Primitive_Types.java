@@ -6,6 +6,14 @@ public class Primitive_Types {
     //double notAtStart = _1000.00;        // No compila
     //double notAtEnd = 1000.00_;          // No compila
     //double notByDecimal = 1000_.00;      // No compila
+
+    // Adicionales:
+    //double notAfterDecimal = 1000._00;   // No compila - pegado después del punto decimal
+    //long notNextToSign = -_1000L;        // No compila - pegado al signo negativo (o positivo)
+    //int notNextToF = 1000_F;             // No compila - pegado al sufijo (F, L, D, etc.)
+
+    //int notAfterPrefix = 0x_1F;   // No compila - pegado justo después del prefijo 0x
+    //int notInBinary = 0b_101;     // No compila - pegado justo después del prefijo 0b
     double annoyingButLegal = 1_00_0.0_0;  // Sí compila
     //TENER EN CUENTA: Se puede agregar guiones bajos en cualquier lugar excepto al principio de un literal
     //al final de un literal, justo antes de un punto decimal o justo después de un punto decimal.

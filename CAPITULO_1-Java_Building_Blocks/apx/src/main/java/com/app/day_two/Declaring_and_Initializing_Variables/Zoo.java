@@ -12,7 +12,7 @@ public class Zoo {
     NumberAnimals = 100;}
 
     //Pero, también se puede colocarlo en la misma declaración de la variable, para ahorrar espacio y tiempo
-    /* String ZooName "Animal Planet";
+    /* String ZooName = "Animal Planet";
     int NumberAnimals = 100 ; */
 
 }

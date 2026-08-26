@@ -2,7 +2,7 @@ package com.app.day_two.Understanding_Variable_Scope;
 
 public class Mouse {
     static int MAX_LENGTH = 5;   //ESTA ES UNA VARIABLE DE CLASE, SE RECONOCE POR LA PALABRA STATIC QUE ESTÁ DELANTE.
-    int length;                 //ESTA ES UNA VARIABLE DE INSTANCIA, YA QUE NO SE ENCUENTRA DENTRO DE UN METODO,
+    int length;                 //ESTA ES UNA VARIABLE DE INSTANCIA, YA QUE NO SE ENCUENTRA DEFINIDA DENTRO DE UN METODO,
                                 //SINO COMO CAMPO DE UNA CLASE
 
     public void grow(int inches) { //ESTE ES UN METODO QUE TIENEN UNA VARIABLE LOCAL inches, su alcance es en todo el método

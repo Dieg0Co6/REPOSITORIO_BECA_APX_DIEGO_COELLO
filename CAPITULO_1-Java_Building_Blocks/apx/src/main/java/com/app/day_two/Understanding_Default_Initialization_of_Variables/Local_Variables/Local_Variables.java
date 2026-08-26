@@ -5,13 +5,13 @@ public class Local_Variables {
     //LAS VARIABLES LOCALES SON VARIABLES DEFINIDAS DENTRO DE UN METODO
     //ESTAS VARIABLES SE DEBEN ENCONTRAR INICIALIZADAS ANTES DE USARSE. YA QUE NO TIENEN UN VALOR POR DEFECTO.
 
-    public int notValid() {
+    /* public int notValid() {
         int y = 10; 
         int x; 
         int reply = x + y; // No compila ya que la variable reply se le asigna x + y, pero x no se encuentra inicializada
                             //Hasta que a x se le asigne un valor, no puede aparecer dentro de una expresion
         return reply;
-    }
+    } */
 
     public int valid() { //Este metodo si compila
         int y = 10;
@@ -21,7 +21,7 @@ public class Local_Variables {
         return reply;
     }
 
-    public void findAnswer(boolean check) {
+    /* public void findAnswer(boolean check) {
         int answer; //Aquí se declara la variable answer
         int onlyOneBranch;   //Aquí se declara la variable onlyOneBranch
         if (check) {
@@ -34,5 +34,5 @@ public class Local_Variables {
         System.out.println(answer);
         System.out.println(onlyOneBranch); // NO COMPILA, PORQUE APARECE EN UNA EXPRESION Y NO SE ASEGURA SU INICIALIZACION
                                             //COMO HAY UNA POSIBILIDAD DE QUE NO SEA INICIALIZADO, ENTONCES ARROJA ERROR.
-    }
+    } */
 }

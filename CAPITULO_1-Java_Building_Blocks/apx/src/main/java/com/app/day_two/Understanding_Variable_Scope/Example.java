@@ -35,6 +35,8 @@ public class Example {
         //System.out.println(teenyBit);  // NO COMPILA YA QUE NO SABE QUE ES teenyBit
     }
 
+    //LAS VARIABLES LOCALES QUE SE PASAN COMO PARAMETROS TIENEN ALCANCE EN TODO EL MÉTODO Y SON NECESARIO QUE SE INICIALICEN
+    //PORQUE SE VAN A INICIALIZAR AL MOMENTO DE LA LLAMADA DEL MÉTODO.
     public void eatMore(boolean hungry, int amountOfFood) {
         int roomInBelly = 5;
         if (hungry) {

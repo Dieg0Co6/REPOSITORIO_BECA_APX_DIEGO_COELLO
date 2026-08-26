@@ -15,6 +15,6 @@ public class Instance_and_Class_Variables {
     /* byte, short, int, long //se les asigna el valor 0 por defecto
     boolean //por defecto false
     float, double // 0.0
-    char //null
-    //cualquier objeto  //null */
+    char //'\u0000'
+    cualquier objeto (incluido String) //null */
 }

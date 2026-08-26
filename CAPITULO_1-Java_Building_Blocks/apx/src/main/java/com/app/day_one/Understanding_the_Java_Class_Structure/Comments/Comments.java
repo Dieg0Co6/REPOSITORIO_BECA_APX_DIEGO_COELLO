@@ -25,7 +25,7 @@ public class Comments {
     /* elephant */      //Bien comentado
     /*
     * /* ferret */      //Acá hay un error, ya que en el comentario está cerrando en la linea 27, por el "*/" y no por la linea 28
-    */
+    //*/        //Comentado para que no salga error
 
     //Todo desde el primer /* hasta el primer */ forma parte del comentario, lo que significa que el compilador ve algo así
     // /* */ */
