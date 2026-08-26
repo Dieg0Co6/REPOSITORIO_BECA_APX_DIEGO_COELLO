@@ -44,6 +44,9 @@ public class Implementing_Interfaces {
         Implementing_Interfaces implementing_Interfaces = new Implementing_Interfaces();
         implementing_Interfaces.Defining_an_Interface();
         implementing_Interfaces.Inheriting_an_Interface();
+        implementing_Interfaces.Interface_Variables();
+        implementing_Interfaces.Default_Interface_Methods();
+        implementing_Interfaces.Static_Interface_Methods();
     }
 
     public void Defining_an_Interface(){
@@ -57,7 +60,9 @@ public class Implementing_Interfaces {
             * 4. Todas las interfaces de nivel superior se asumen con acceso público o por defecto, y deben incluir el modificador abstract en su definición
             * (SI NO SE COLOCA ABSTRACT, LO ASUME IMPLICITAMENTE).
             * Por lo tanto, marcar una interfaz como privada, protegida o final generará un error de compilación, ya que esto es incompatible con estas suposiciones.
-            * 5. Todos los métodos que no sean predeterminados en una interfaz se asumen con los modificadores abstract y public en su definición. Por lo tanto, marcar un método como privado, protegido o final generará errores de compilación, ya que estos son incompatibles con las palabras clave abstract y public
+            * 5. Todos los métodos que no sean predeterminados en una interfaz se asumen con los modificadores abstract y public en su definición.
+            * Por lo tanto, marcar un método como privado, protegido o final generará errores de compilación,
+            * ya que estos son incompatibles con las palabras clave abstract y public
         */
 
         //La cuarta regla no se aplica a las interfaces internas, aunque las clases e interfaces internas no están dentro del alcance del examen OCA
@@ -334,4 +339,268 @@ public class Implementing_Interfaces {
         //LUEGO SE VERÁN LOS MÉTODOS DE INTERFACE POR DEFECTO.
     }
 
+    public void Interface_Variables(){
+        //EXISTEN LAS VARIABLES DE INTERFAZ,QUE PUEDEN DEFINIRSE DENTRO DE UNA INTERFAZ.
+
+        //AL IGUAL QUE LOS MÉTODOS DE INTERFAZ, SE ASUME QUE LAS VARIABLES DE INTERFAZ SON PUBLICAS.
+        //SIN EMBARGO, A DIFERENCIA DE LOS MÉTODOS DE INTERFAZ, TAMBIÉN SE ASUME QUE LAS VARIABLES DE INTERFAZ SON ESTÁTICAS Y FINALES
+
+        /*
+        REGLAS PARA LAS VARIABLES DE INTERFAZ
+            * 1. Se asume que las variables de interfaz son públicas, estáticas y finales. 
+            * Por lo tanto, marcar una variable como privada o protegida provocará un error de compilador,
+            * al igual que marcar cualquier variable como abstracta.
+            * 
+            * 2. El valor de una variable de interfaz debe establecerse cuando se declara, ya que está marcada como final.
+        */
+
+        //ESO QUIERE DECIR QUE: las variables de interfaz son esencialmente variables CONSTANTES definidas a nivel de interfaz.
+
+        // COMO SON ESTÁTICAS SON ACCESIBLES INCLUSO SIN UNA INSTANCIA DE LA INTERFAZ
+
+        //Las siguientes dos definiciones de interfaz son equivalentes, porque el compilador las convertirá automáticamente
+        //a la segunda opción:
+
+        /* public interface CanSwim {      //INTERFACE
+            int MAXIMUM_DEPTH = 100;        //no tiene ni el public ni el final. Pero Java lo convierte automaticamente
+            final static boolean UNDERWATER = true; //no importa si es final static o static final. Java lo convierte a public automaticamente
+            public static final String TYPE = "Submersible";    //bien declarado
+        }
+
+        public interface CanSwim {          //INTERFACE
+            public static final int MAXIMUM_DEPTH = 100;
+            public static final boolean UNDERWATER = true;
+            public static final String TYPE = "Submersible";
+        } */
+
+        //ESTE CODIGO, SI COMPILA. JAVA ASUME QUE TODAS LAS VARIABLE DECLARADAS COMO PUBLIC STATIC FINAL, SI NO TIENEN ESAS PALABRAS CLAVE
+        // JAVA LOS CONVIERTE AUTOMATICAMENTE.
+
+        //El compilador insertará automáticamente public static final en cualquier variable de interfaz constante a la que le falten esos modificadores.
+
+        //También hay que notar que es una práctica común de codificación usar letras mayúsculas para denotar valores constantes dentro de una clase.
+
+        //EJMPLO:
+
+        /* public interface CanDig {
+            private int MAXIMUM_DEPTH = 100;  // NO COMPILA, PORQUE SE LE ESTÁ COLOCANDO EL MODIFICADOR DE ACCESO PRIVATE (DEBE SER PUBLIC)
+            protected abstract boolean UNDERWATER = false;  //NO COMPILA, PORQUE SE LE ESTÁ COLOCANDO EL MODIFICADOR DE ACCESO PROTECTED (DEBE SER PUBLIC)
+                                                            Y TAMPOCO PUEDE SER ABSTRACT (DEBE SER FINAL)
+            public static String TYPE;  // NO COMPILA, PORQUE NO SE LE HA INICIALIZADO LA VARIABLE CONSTANTE.
+        } */
+
+        //El primer ejemplo, MAXIMUM_DEPTH, no compila porque se usa el modificador private, y se asume que todas las variables de la interfaz son públicas.
+        //La segunda línea, UNDERWATER, no compila por dos razones. Está marcada como protected,
+        //lo que entra en conflicto con el modificador público asumido, y está marcada como abstract,
+        //lo que entra en conflicto con el modificador final asumido. 
+        //Finalmente, el último ejemplo, TYPE, no compila porque le falta un valor a esa variable public static final.
+    }
+
+    public void Default_Interface_Methods(){
+        //Con el lanzamiento de Java 8, los autores de Java introdujeron un nuevo tipo de método en una interfaz, conocido como método default.
+
+        //Un método predeterminado es un método definido dentro de una interfaz con la palabra clave default, en el que se proporciona un cuerpo de método
+
+        //Este método predeterminado constrasta con los métodos normales de las interfaces las cuales son abstractas y no pueden tener cuerpo de metodo.
+
+        //Un método por defecto dentro de una interfaz define un método abstracto con una implementación por defecto.
+        //De esta manera, las clases tienen la opción de sobrescribir el método por defecto si lo necesitan, pero no están obligadas a hacerlo.
+        //Si la clase no sobrescribe el método, se usará la implementación por defecto. De este modo, LA DEFINICIÓN DEL MÉTODO ES CONCRETA, NO ABSTRACTA.
+        
+
+        //====================================================================
+        // PROÓSITO DEL USO DE METODO(S) DE INTERFAZ POR DEFECTO
+        //====================================================================
+        //El propósito fue en parte ayudar con el desarrollo de código y la compatibilidad hacia atrás.
+        //Imagina que tienes una interfaz que es compartida entre docenas o incluso cientos de usuarios y quieres añadirle un método nuevo.
+
+        //Si solo actualizas la interfaz con el nuevo método, la implementación se rompería entre todos tus suscriptores,
+        //quienes entonces se verían obligados a actualizar su código. En la práctica, esto incluso podría desanimarte a hacer el cambio por completo.
+        //Sin embargo, al proporcionar una implementación por defecto del método, la interfaz se vuelve compatible con el código existente,
+        //mientras sigue ofreciendo a aquellos que sí quieren usar el nuevo método la opción de sobrescribirlo.
+
+        //EJMPLO DE UN METODO DE INTERFAZ POR DEFECTO.
+
+        /* public interface IsWarmBlooded {        //INTERFACE
+            boolean hasScales();                //METODO ABSTRACTO
+            public default double getTemperature() {        //METODO CONCRETO POR DEFECTO
+                return 10.0;
+            }
+        } */
+
+        //NO CONFUNDIR: ESE DEFAULT NO ES COMO EL MODIFICADOR DE ACCESO DE PACKAGE PRIVATE O PAQUETE PRIVADO.
+        //TODAS LAS VARIABLES Y METODOS DE UNA INTERFACE SE ASUMEN QUE SON PUBLICOS.
+
+        //Cualquier clase que implemente IsWarmBlooded puede usar la implementación por defecto de getTemperature() o sobrescribir
+        //el método y crear su propia versión.
+
+        /*
+        LAS SIGUIENTES SON LAS REGLAS DE LOS METODOS POR DEFECTO DE LAS INTERFACES:
+        * 1. Un método por defecto solo puede declararse dentro de una interfaz y no dentro de una clase o clase abstracta.
+        * 2. Un método por defecto debe estar marcado con la palabra clave default.
+        * Si un método está marcado como default, debe proporcionar un cuerpo de método.
+        * 3. No se asume que un método por defecto sea estático, final o abstracto, ya que puede ser usado o sobrescrito
+        * por una clase que implemente la interfaz.
+        * 4. Como todos los métodos en una interfaz, se asume que un método por defecto es público y no se compilará si
+        * está marcado como private o protected 
+        */
+
+        /* public interface Carnivore {
+            public default void eatMeat();  // NO COMPILA PORQUE SE LE INDICA QUE ES UN METODO POR DEFECTO PERO NO TIENE CUERPO DE METODO
+            public int getRequiredFoodAmount() {  //NO COMPILA PORQUE NO ES UN METODO POR DEFECTO Y TIENE UN CUERPO DE METODO.
+                return 13;
+            }
+        } */
+
+        //El primer método, eatMeat(), no compila porque está marcado como default pero no tiene un cuerpo de método.
+        //El segundo método, getRequiredFoodAmount(), tampoco compila porque tiene un cuerpo de método pero no está marcado con la palabra clave default
+
+        /*
+        * A diferencia de las variables de interfaz, que se consideran miembros estáticos de la clase,
+        * los métodos por defecto no pueden marcarse como estáticos y requieren una instancia de la clase que implemente la interfaz para ser invocados.
+        
+        * Tampoco pueden marcarse como finales o abstractos, porque se permite que sean sobrescritos en subclases, pero no es obligatorio hacerlo.
+        
+        * Cuando una interfaz extiende otra interfaz que contiene un método por defecto, puede optar por ignorar el método por defecto, 
+        * en cuyo caso se usará la implementación predeterminada del método. 
+        
+        * Alternativamente, la interfaz puede sobrescribir la definición del método por defecto usando las reglas estándar para la sobrescritura de métodos,
+        * como no limitar la accesibilidad del método y usar retornos covariantes.
+        
+        * Finalmente, la interfaz puede redeclarar el método como abstracto, requiriendo que las clases que implementen la nueva interfaz
+        * proporcionen explícitamente un cuerpo para el método. Opciones análogas se aplican para una clase abstracta que implemente una interfaz.
+        
+        */
+
+        //Por ejemplo, la siguiente clase sobrescribe un método por defecto de la interfaz y redeclara un segundo método de la interfaz como abstracto:
+
+        /* public interface HasFins {      //interface
+            public default int getNumberOfFins() {
+                return 4;
+            }
+            public default double getLongestFinLength() {
+                return 20.0;
+            }
+            public default boolean doFinsHaveScales() {
+                return true;
+            }
+        }
+
+        public interface SharkFamily extends HasFins {      //interface SharkFamily extiende de HasFins
+            public default int getNumberOfFins() {      //sobreescritura de metodo por defecto getNumberOfFins
+                return 8;
+            }
+            public double getLongestFinLength();   //sobreescribe el metodo, pero ya no lo considera por defecto, entonces ya no tiene cuerpo.
+            public boolean doFinsHaveScales() {  //NO COMPILA. PORQUE SE SOBREESCRIBIÓ Y YA NO ES METODO POR DEFECTO Y SE ESTÁ COLOCANDO UN CUERPO DE METODO.
+                return false;
+            }
+        } */
+
+        //La primera interfaz, HasFins, define tres métodos por defecto: getNumberOfFins(), getLongestFinLength() y doFinsHaveScales().
+        //La segunda interfaz, SharkFamily, extiende HasFins y sobrescribe el método por defecto getNumberOfFins() con un nuevo método que
+        //devuelve un valor diferente. Luego, la interfaz SharkFamily reemplaza el método por defecto getLongestFinLength() con un nuevo método
+        //abstracto, obligando a cualquier clase que implemente la interfaz SharkFamily a proporcionar una implementación del método.
+        
+        //Finalmente, la interfaz SharkFamily sobrescribe el método doFinsHaveScales() pero no marca el método como por defecto.
+        //Dado que las interfaces solo pueden contener métodos con cuerpo que estén marcados como por defecto, el código no se compilará.
+
+        this.Default_Methods_and_Multiple_Inheritance();
+    }
+
+    private void Default_Methods_and_Multiple_Inheritance(){
+        //Al permitir métodos predeterminados en las interfaces, junto con el hecho de que una clase puede implementar múltiples interfaces,
+        //Java básicamente ha abierto la puerta a problemas de herencia múltiple. EJM:
+
+        /* public interface Walk {     //INTERFACE
+            public default int getSpeed() {
+                return 5;
+            }
+        }
+
+        public interface Run {      //INTERFACE
+            public default int getSpeed() {
+                return 10;
+            }
+        }
+
+        public class Cat implements Walk, Run {  // NO COMPILA
+            public static void main(String[] args) {
+                System.out.println(new Cat().getSpeed());
+            }
+        } */
+
+
+        //En este ejemplo, Cat hereda los dos métodos por defecto para getSpeed(), entonces, ¿cuál usa?
+        //Como Walk y Run se consideran hermanos en términos de cómo se usan en la clase Cat,no está claro si el código debería mostrar 5 o 10.
+        //La respuesta es que el código no muestra ninguno de esos valores: NO COMPILA.
+
+        // Si una clase implementa dos interfaces que tienen métodos por defecto con el mismo nombre y firma, el compilador lanzará un error.
+        
+        //Sin embargo, hay una excepción a esta regla: si la subclase sobrescribe los métodos por defecto duplicados,
+        //el código compilará sin problemas, ya que se elimina la ambigüedad sobre qué versión del método llamar. EJM:
+
+        /* public class Cat implements Walk, Run {  
+            public int getSpeed() {
+                return 1;
+            }
+            public static void main(String[] args) {
+                System.out.println(new Cat().getSpeed());       //COMPILARÁ SIN PROBLEMAS.PORQUE REDEFINIÓ EL METODO QUE ERA AMBIGUO
+            }
+        } */
+
+        //Tener una clase que implemente o herede dos métodos predeterminados duplicados obliga a la clase a implementar una nueva versión del método,
+        //o el código no se compilará. Esta regla se cumple incluso para las clases abstractas que implementan múltiples interfaces,
+        //porque el método predeterminado podría ser llamado en un método concreto dentro de la clase abstracta.
+    }
+
+    public void Static_Interface_Methods(){
+        //Java 8 también incluye ahora soporte para métodos estáticos dentro de las interfaces.
+        //Estos métodos se definen explícitamente con la palabra clave static y
+        //funcionan casi de la misma manera que los métodos estáticos definidos en clases
+
+        //De hecho, realmente solo hay una diferencia entre un método estático en una clase y en una interfaz.
+        //Un método estático definido en una interfaz NO SE HEREDA EN NINGUNA CLASE QUE IMPLEMENTE LA INTERFAZ.
+
+        /*
+        * 1. Como todos los métodos en una interfaz, se asume que un método estático es público .NO SE COMPILARÁ si se marca como private o protected
+        * 2. Para referirse al método estático, se debe usar una referencia al nombre de la interfaz.
+        */
+
+        //EJM:
+
+        /* public interface Hop {      //INTERFACE
+            static int getJumpHeight() {     //SE ASUME QUE ES UN METODO PUBLICO
+                return 8;
+            }
+        } */
+
+        //El método getJumpHeight() funciona como un método estático tal como se define en una clase.
+        //En otras palabras, se puede acceder a él sin una instancia de la clase usando la sintaxis Hop.getJumpHeight(). 
+        
+        //Además, ten en cuenta que el compilador insertará automáticamente el modificador de acceso public,
+        //ya que se asume que todos los métodos en las interfaces son públicos.
+
+        //EJEMPLO DE UNA CLASE IMPLEMENTANDO EL INTERFACE .
+
+        /* public class Bunny implements Hop {
+            public void printDetails() {
+                System.out.println(getJumpHeight()); // NO COMPILA, YA QUE PARA USAR EL METODO ESTATICO,
+                                                    SE TIENE QUE USAR COMO REFERENCIA EL NOMBRE DE LA INTERFACE SEGUIDO DEL METODO STATIC
+            }
+        } */
+
+        //Sin una referencia explícita al nombre de la interfaz, el código no compilará, aunque Bunny implemente Hop.
+        //De esta manera, los métodos estáticos de la interfaz no son heredados por una clase que implementa la interfaz.
+
+        //EJMPLO CORREGIDO:
+
+        /* public class Bunny implements Hop {
+            public void printDetails() {
+                System.out.println(Hop.getJumpHeight());  //AHORA SÍ HACER REFERENCIA AL NOMBRE DE LA INTERFAZ, SI COMPILA.
+            }
+        } */
+
+        //Una clase que implementa dos interfaces que contienen métodos estáticos con la misma firma todavía se compilará en tiempo de ejecución,
+        //porque los métodos estáticos no se heredan por la subclase y deben ser accedidos con una referencia al nombre de la interfaz.
+    }
 }
