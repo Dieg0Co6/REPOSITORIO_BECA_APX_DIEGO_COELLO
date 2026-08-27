@@ -566,6 +566,8 @@ public class Implementing_Interfaces {
         * 2. Para referirse al método estático, se debe usar una referencia al nombre de la interfaz.
         */
 
+        //Un método static en una interfaz debe tener cuerpo . NO puede quedar abstracto/sin implementación.
+
         //EJM:
 
         /* public interface Hop {      //INTERFACE
