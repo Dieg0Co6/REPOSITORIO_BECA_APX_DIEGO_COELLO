@@ -1,6 +1,4 @@
-package com.app5.Understanding_Polymorphism;
-
-import com.app5.Creating_Abstract_Classes.Creating_Abstract_Classes.Animal;
+package com.app5.day_twelve.Understanding_Polymorphism;
 
 public class Understanding_Polymorphism {
     //El polimorfismo, es la propiedad de un objeto de asumir muchas formas diferentes.

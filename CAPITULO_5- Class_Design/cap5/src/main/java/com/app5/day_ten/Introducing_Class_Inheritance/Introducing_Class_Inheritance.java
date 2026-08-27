@@ -1,4 +1,4 @@
-package com.app5.Introducing_Class_Inheritance;
+package com.app5.day_ten.Introducing_Class_Inheritance;
 
 public class Introducing_Class_Inheritance {
 

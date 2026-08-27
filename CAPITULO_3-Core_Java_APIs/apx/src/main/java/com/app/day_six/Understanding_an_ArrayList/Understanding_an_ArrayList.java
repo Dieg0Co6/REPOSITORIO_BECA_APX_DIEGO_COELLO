@@ -134,9 +134,10 @@ public class Understanding_an_ArrayList {
         List<String> birds = new ArrayList<>();
         birds.add("hawk");                    // [hawk]
         System.out.println(birds.size());     // 1
-        birds.set(0, "robin");         // [robin]     //Se pasa como parametro el indice y el nuevo valor
+        birds.set(0, "robin");         // [hawk]     //Se pasa como parametro el indice y el nuevo valor
         System.out.println(birds.size());     // 1
         birds.set(1, "robin");        // IndexOutOfBoundsException
+
     }
 
     private void isEmpty_and_size(){
