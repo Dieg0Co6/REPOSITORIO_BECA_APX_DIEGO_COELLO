@@ -39,7 +39,7 @@ public class Overloading_Methods {
     //LLAMAR A LOS METODOS SOBRECARGADOS ES FACIL, SOLO SE DEBE PASAR LOS PARAMETROS Y JAVA SE ENCARGA DE IDENTIFICAR A CUAL MÉTODO SE REFIERE.
 
     /* public void fly(int numMiles) {
-        System.out.println("short");
+        System.out.println("int");
     }
     public void fly(short numFeet) {
         System.out.println("short");

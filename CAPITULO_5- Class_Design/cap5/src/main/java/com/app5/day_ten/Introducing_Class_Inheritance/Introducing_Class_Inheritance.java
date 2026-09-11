@@ -650,6 +650,7 @@ public class Introducing_Class_Inheritance {
         //violaría dos reglas de sobrescribir métodos. (DE MODIFICADOR DE ACCESO MENOR Y DE DIFERENTES TIPO DE RETORNO)
     }
 
+    //ME QUEDÉ AQUÍ
     private void Hiding_Static_Methods(){
         //Un método oculto ocurre cuando una clase hija define un método estático con el mismo nombre y
         //firma (parámetros) que un método estático definido en una clase padre.
@@ -802,7 +803,7 @@ public class Introducing_Class_Inheritance {
             public boolean isBiped() {      //METODO SOBREESCRITO
                 return true;
             }
-            public void getKangarooDescription() {  //METODO SOBREESCRITO
+            public void getKangarooDescription() { 
                 System.out.println("Kangaroo hops on two legs: "+isBiped());
             }
             public static void main(String[] args) {
@@ -812,7 +813,7 @@ public class Introducing_Class_Inheritance {
             }
         } */
 
-        //EN ESTE EJEMPLO, VEMOS QUE SE INSTANCIÓ EL OBJETO DE LA CLASE Kangaroo, Y TODAS LAS FUNCIONES VAN A APUNTAR A LOS METODOS SOBREESCRITOS DE Kangaroo.
+        //EN ESTE EJEMPLO, VEMOS QUE SE INSTANCIÓ EL OBJETO DE LA CLASE Kangaroo, Y TODAS LAS FUNCIONES VAN A APUNTAR A LOS METODOS DE Kangaroo.
         //POR LO TANTO, VA IMPRIMIR LO SIGUIENTE:
         //Marsupial walks on two legs: true
         //Kangaroo hops on two legs: true
@@ -890,7 +891,7 @@ public class Introducing_Class_Inheritance {
         //[parentTail= 4]
         //[tail= 8 ,parentTail= 4]
 
-        //SLa instancia de Mouse contiene dos copias de la variable tailLength:
+        //La instancia de Mouse contiene dos copias de la variable tailLength:
         //una definida en el padre y otra definida en el hijo.
         // Estas instancias se mantienen separadas entre sí,
         // lo que permite que nuestra instancia de Mouse haga referencia a ambos valores de tailLength de manera independiente.

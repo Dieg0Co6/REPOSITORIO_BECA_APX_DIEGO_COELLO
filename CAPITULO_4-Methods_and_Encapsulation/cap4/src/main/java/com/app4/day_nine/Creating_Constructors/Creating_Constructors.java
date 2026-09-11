@@ -2,7 +2,8 @@ package com.app4.day_nine.Creating_Constructors;
 
 public class Creating_Constructors {
     public static void main(String[] args) {
-        //Un constructor es un método especial que coincide con el nombre de la clase y no tiene tipo de retorno. EJM:
+        //Un constructor es un bloque de código que se ejecuta al instanciar una clase que coincide con el nombre de la clase
+        //y no tiene tipo de retorno. EJM:
 
         /* public class Bunny {
             public Bunny() {        //ESTE ES EL CONTRUCTOR, EN EL QUE SE PUEDE VER QUE NO TIENE TIPO DE RETORNO, NI EL VOID
@@ -345,16 +346,16 @@ public class Creating_Constructors {
         //Y SI COMPLICAMOS MÁS EL EJEMPLO:
 
         /* public class YetMoreInitializationOrder {
-            static { add(2); }  
+            static { add(2); }
             static void add(int num) { System.out.print(num + " "); }  
             YetMoreInitializationOrder(){   
                 add(5); 
             }
-            static { add(4); }  
+            static { add(4); } 
             { add(6); }
-            static { new YetMoreInitializationOrder(); }
+            static { new YetMoreInitializationOrder(); } 
             static{ add(9); } 
-            { add(8); }
+            { add(8); } 
             static{ add(100); } 
             public static void main(String[] args) { }
         } */

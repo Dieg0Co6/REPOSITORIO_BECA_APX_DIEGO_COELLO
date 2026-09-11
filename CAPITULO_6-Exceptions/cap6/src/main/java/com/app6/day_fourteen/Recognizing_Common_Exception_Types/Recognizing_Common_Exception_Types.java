@@ -174,7 +174,7 @@ public class Recognizing_Common_Exception_Types {
 
     public void Checked_Exceptions(){
         //Las excepciones verificadas tienen Exception en su jerarquía pero no RuntimeException.
-        //Deben ser manejadas o declaradas.
+        //Deben ser manejadas o declaradas. (OBLIGATORIAMENTE)
         //Pueden ser lanzadas por el programador o por la JVM.
 
         this.FileNotFoundException();

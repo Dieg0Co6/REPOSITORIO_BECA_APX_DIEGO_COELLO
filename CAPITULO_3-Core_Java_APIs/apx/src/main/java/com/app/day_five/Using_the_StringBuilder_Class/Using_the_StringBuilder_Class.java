@@ -13,7 +13,7 @@ public class Using_the_StringBuilder_Class {
 
         //De los 27 objetos,La mayoría de los cuales son elegibles para la recolección de basura inmediatamente. Esto es muy ineficiente. 
         //Por suerte, Java tiene una solución. La clase StringBuilder crea un String sin almacenar todos esos valores intermedios de String.
-        // A diferencia de la clase String, StringBuilder no es INMUTABLE.
+        // A diferencia de la clase String, StringBuilder no es MUTABLE.
         StringBuilder alpha1 = new StringBuilder();
         for(char current = 'a'; current <= 'z'; current++) 
             alpha1.append(current);

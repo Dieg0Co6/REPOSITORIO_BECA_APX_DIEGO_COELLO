@@ -41,9 +41,9 @@ public class Understanding_Exceptions {
 
         //EJM:
 
-        class AnimalsOutForAWalk extends RuntimeException { }
-        class ExhibitClosed extends RuntimeException { }
-        class ExhibitClosedForLunch extends ExhibitClosed { }
+        class AnimalsOutForAWalk extends RuntimeException { }       //NO COMPROBADA
+        class ExhibitClosed extends RuntimeException { }        //NO COMPROBADA
+        class ExhibitClosedForLunch extends ExhibitClosed { }       //NO COMPROBADA
 
         //En este ejemplo, hay tres excepciones personalizadas.
         //Todas son excepciones no verificadas porque extienden directa o indirectamente RuntimeException.
@@ -111,9 +111,9 @@ public class Understanding_Exceptions {
         /* public void visitMonkeys() {
             try {
                 seeAnimal();
-            } catch (ExhibitClosed e) {
+            } catch (ExhibitClosed e) {     //SUPERCLASE    
                 System.out.print("not today");
-            } catch (ExhibitClosedForLunch e) {// ESTO NO COMPILA
+            } catch (ExhibitClosedForLunch e) {  //SUBCLASE      // ESTO NO COMPILA
                 System.out.print("try back later");
             } 
         } */
@@ -127,11 +127,11 @@ public class Understanding_Exceptions {
         /* public void visitSnakes() {
             try {
                 seeAnimal();
-            } catch (RuntimeException e) {
+            } catch (RuntimeException e) {      //SUPERCLASE
                 System.out.print("runtime exception");
-            } catch (ExhibitClosed e) {// ESTO NO COMPILA
+            } catch (ExhibitClosed e) {  //SUBCLASE      // ESTO NO COMPILA
                 System.out.print("not today");
-            } catch (Exception e) {
+            } catch (Exception e) {     //SUPERCLASE DE RUNTIMEEXCEPTION
                 System.out.print("exception");
             }
         } */
@@ -189,6 +189,8 @@ public class Understanding_Exceptions {
                 a) close() funciona bien → el catch interno ni se usa, el método main() termina normal.
                 b) close() también lanza IOException → el catch interno la atrapa... pero está vacío, no hace nada con ella. 
                 Entonces esa excepción nueva sigue su camino y hace que main() termine con una excepción (crash).
+                Es decir, siempre que no se atrape la excepción, se programa hacia el metodo que lo llamó y si llega al main y nada
+                Entonces se programa a la JVM y ahí se rompe el hilo.
         */
 
         //En el examen te van a dar código con nombres genéricos tipo letras o números 

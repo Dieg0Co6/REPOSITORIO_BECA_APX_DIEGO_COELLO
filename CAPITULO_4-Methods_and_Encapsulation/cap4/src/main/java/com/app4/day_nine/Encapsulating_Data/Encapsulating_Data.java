@@ -76,7 +76,7 @@ public class Encapsulating_Data {
             public ImmutableSwan(int numberEggs) {  //constructor 
                 this.numberEggs = numberEggs;   //inicialización de la variable de instancia
             }
-            public int getNumberEggs() {    //solo metodo setter
+            public int getNumberEggs() {    //solo metodo getter
                 return numberEggs;
             } 
         } */
@@ -103,7 +103,7 @@ public class Encapsulating_Data {
         /* StringBuilder sb = new StringBuilder("initial");        //Se instancia la variable sb con tipo de dato StringBuilder
         NotImmutable problem = new NotImmutable(sb);        //Se instancia el objeto de la clase NotInmmutable con valor de sb
         sb.append(" added");        //acá se agrega un valor al objeto StringBuilder (initial added)
-        StringBuilder gotBuilder = problem.getBuilder();  // acá obtenemos el valor del objeto que apunta a la variable problem.(initial added)
+        StringBuilder gotBuilder = problem.getBuilder();  // acá obtenemos el valor del objeto que apunta a la variable sb.(initial added)
         gotBuilder.append(" more");         //acá al valor que obtenemos le añadimos el valor more. StringBuilder es mutable (initial added more)
         System.out.println(problem.getBuilder());       //acá devuelve el valor cambiado: initial added more. */
 

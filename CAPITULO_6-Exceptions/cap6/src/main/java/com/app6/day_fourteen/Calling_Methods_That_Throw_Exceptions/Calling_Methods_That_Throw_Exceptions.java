@@ -181,7 +181,7 @@ public class Calling_Methods_That_Throw_Exceptions {
             try {
                 readInFile();
             } catch (IOException e) {
-                // Ignorar excepción   -   El catch la atrapa... pero no hace nada con ella. Está vacío. La "traga" en silencio.
+                Ignorar excepción   -   El catch la atrapa... pero no hace nada con ella. Está vacío. La "traga" en silencio.
             }
 
         

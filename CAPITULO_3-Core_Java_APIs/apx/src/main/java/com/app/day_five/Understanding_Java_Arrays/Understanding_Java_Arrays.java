@@ -144,7 +144,7 @@ public class Understanding_Java_Arrays {
     public void Sorting(){
         //EXISTE EL METODO SORT() QUE ORDENA EL ARREGLO.
 
-        //HAY UNA CLASE QUE PROPORCIONA JKAVA Y SE NECESITA IMPORTARTLO. EJM:
+        //HAY UNA CLASE QUE PROPORCIONA JAVA Y SE NECESITA IMPORTARTLO. EJM:
         /*  import java.util.*           
             import java.util.Arrays;  */    
         //EJEMPLO

@@ -6,11 +6,11 @@ public class Applying_Access_Modifiers {
     
     public static void main(String[] args) {
         //Ya vi que hay cuatro tipos de modificadores de acceso.
-        //public, private, proteged y package private (default)
+        //public, private, protected y package private (o acceso por defecto)
 
         /*  
             * private                       -> Solo se puede usar el método en la misma clase
-            * default (package private)     -> Solamente se puede usar el método en clases que se encuentren en el mismo package
+            * package private               -> Solamente se puede usar el método en clases que se encuentren en el mismo package
             * protected                     -> Solo se puede usar el método en clases del mismo package y subclases 
             * public                        -> Se puede usar el método en cualquier clase
          */
@@ -165,7 +165,7 @@ public class Applying_Access_Modifiers {
             } 
         } */
 
-        //SOLAMENTE SE PUEDE UTILZIAR LOS METODOS Y VARIABLES PROTECTED, INSTANCIANDO LA MISMA SUBCLASES O UNA SUBCLASE
+        //SOLAMENTE SE PUEDE UTILIZAR LOS METODOS Y VARIABLES PROTECTED, INSTANCIANDO LA MISMA SUBCLASES O UNA SUBCLASE
         //DE LA SUBCLASE.
         //NO SE PUEDE UTILIZAR LOS METODOS Y VARIABLES PROTECTED INSTANCIANDO EL OBJETO DE LA CLASE PADRE.
         //TIENE QUE SE INSTANCIADO DESDE LA MISMA SUBCLASE. OTRO EJEMPLO:
@@ -180,8 +180,8 @@ public class Applying_Access_Modifiers {
         }
         public void helpOtherGooseSwim() {
             Bird other = new Goose();      //Instancia un objeto de la clase Padre
-            other.floatInWater(); // No compila porque está usando el metodo protected desde el objeto de la clase padre
-            System.out.println(other.text); // No compila porque está usando la variable protected desde el objeto de la clase padre
+            other.floatInWater(); //No compila porque está usando el método protected de un objeto de tipo Goose pero asignado a una variable de referencia de tipo Bird
+            System.out.println(other.text); //No compila porque está usando el método protected de un objeto de tipo Goose pero asignado a una variable de referencia de tipo Bird
         } } */
 
         //Bird no es una subclase de Bird
@@ -211,7 +211,7 @@ public class Applying_Access_Modifiers {
             } 
         }
 
-        //EN OTRO PACKAGE:
+        EN OTRO PACKAGE:
         package pond.goose;
         import pond.duck.DuckTeacher;
         public class LostDuckling {
@@ -262,7 +262,7 @@ public class Applying_Access_Modifiers {
 
 
         //TENER EN CUENTA QUE:
-        //sÍ SE PUEDE usar una instancia del objeto para llamar a un método estático.
+        //SÍ SE PUEDE usar una instancia del objeto para llamar a un método estático.
         //FUNCIONA PARA VARIABLES Y MÉTODOS
         //EL COMPILADOR VERIFICA EL TIPO DE LA REFERENCIA Y USA ESO EN LUGAR DEL OBJETO. EJM:
 
@@ -332,7 +332,7 @@ public class Applying_Access_Modifiers {
             public void babyGorilla() { count++; }  //metodo de instancia si puede usar variable o metodo estatico
             public void announceBabies() {
                 addGorilla();   //metodo de instancia si puede usar variable o metodo estatico
-                babyGorilla();  //metodo de instancia si puede usar variable o metodo de referencia
+                babyGorilla();  //metodo de instancia si puede usar variable o metodo de instancia
             }
             public static void announceBabiesToEveryone() { //metodo estatico
                 addGorilla();       //metodo estatico sí puede llamar a un metodo estático
@@ -410,7 +410,7 @@ public class Applying_Access_Modifiers {
 
         /* private static int one;     //variable estática
         private static final int two;   //variable estática final - CONSTANTE
-        private static final int three = 3;     //variable estática final - INICIALIZADA
+        private static final int three = 3;     //variable estática final - CONSTANTE INICIALIZADA
         private static final int four;     //NO COMPILA, YA QUE NO SE INICIALIZÓ EN TODO EL CÓDIGO, COMO NO TIENE VALOR, NO COMPILA
         static {
           one = 1;      //SE INICIALIZA A 1 APENAS SE EJECUTA LA CLASE

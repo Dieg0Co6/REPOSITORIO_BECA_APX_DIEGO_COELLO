@@ -103,7 +103,7 @@ public class Understanding_Polymorphism {
 
     
     /* HasTail hasTail = lemur;
-    System.out.println(hasTail.age);  // NO COMPILA PORQUE LA VARIABLE AGE CORRESPONDE A CLASE PRIMATE, NO A LA INTERFAZ HASTAIL
+    System.out.println(hasTail.age);  // NO COMPILA PORQUE LA VARIABLE AGE CORRESPONDE A CLASE LEMUR, NO A LA INTERFAZ HASTAIL
     Primate primate = lemur;
     System.out.println(primate.isTailStriped());  // NO COMPILA PORQUE EL METODO IMPLEMENTADO NO CORRESPONDE A CLASE PRIMATE.
     */

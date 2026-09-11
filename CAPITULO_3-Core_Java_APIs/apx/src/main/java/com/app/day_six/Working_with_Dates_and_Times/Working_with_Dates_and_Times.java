@@ -361,7 +361,7 @@ public class Working_with_Dates_and_Times {
         System.out.println(dateTime1.format(f));     // January 20, 2020, 11:12
         System.out.println(otherFormat.format(dateTime1));  //20 - 01 - 2020
 
-        //TENER EN CUENTA QUE EL MES (EN NOMBRE O NUMERO) ES SIEMPRE CON MINUSCULAS, PORQUE SI SE COLOCA EL MINUSCULAS, LO TOMA COMO MINUTOS
+        //TENER EN CUENTA QUE EL MES (EN NOMBRE O NUMERO) ES SIEMPRE CON MAYUSUCULAS, PORQUE SI SE COLOCA EL MINUSCULAS, LO TOMA COMO MINUTOS
 
         /*
             * MMMM  ->  M representa el mes. Cuantas más Ms tengas, más detallada será la salida de Java.

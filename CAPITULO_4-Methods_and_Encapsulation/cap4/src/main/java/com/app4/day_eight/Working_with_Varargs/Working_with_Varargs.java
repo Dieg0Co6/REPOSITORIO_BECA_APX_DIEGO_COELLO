@@ -1,6 +1,7 @@
 package com.app4.day_eight.Working_with_Varargs;
 
 public class Working_with_Varargs {
+    //SOLO FALTA ESTE DEL DÍA 8
     public static void main(String[] args) {
         //Un método puede usar un parámetro vararg (argumento variable) como si fuera un arreglo.
         //Sin embargo, es un poco diferente de un arreglo.
