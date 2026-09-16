@@ -1,5 +1,6 @@
 package com.extra.Comparable;
 
+import java.lang.reflect.Method;
 import java.util.Comparator;
 
 public class Comparable {
@@ -273,5 +274,51 @@ public class Comparable {
         //Esto funciona bien para el examen. En el mundo real, sin embargo, las cosas no son tan ordenadas.
         //Tendrás que decidir cómo manejar los nulls o evitar que estén en tu objeto.
         //Es común decidir que los nulls se ordenen antes que cualquier otro valor.
+
+
+
+        //Los métodos auxiliares que deberías conocer para construir un Comparator.
+        //Hemos omitido los tipos de parámetros para que te concentres en los métodos. 
+        //Usan muchas de las interfaces funcionales que aprendiste en el capítulo anterior.
+
+        //TABLA 9.11 Métodos estáticos auxiliares para construir un Comparator
+
+        /*Method                                                         Description
+        comparing(function)                 Compara por los resultados de una función que devuelve cualquier objeto
+                                            (o un primitivo convertido automáticamente en objeto).
+
+        comparingDouble(function)           Compara según los resultados de la función que devuelve un doble.
+
+        comparingInt(function)              Compara según los resultados de una función que devuelve un entero.
+
+        comparingLong(function)             Compara según los resultados de la función que devuelve un long.
+
+        naturalOrder()                      Ordena usando el orden especificado por la implementación de Comparable en el propio objeto.
+
+        reverseOrder()                      Ordena usando el reverso del orden especificado por la implementación de Comparable en el propio objeto.
+
+        */
+
+        //La Tabla 9.12 muestra los métodos que puedes encadenar a un Comparator para especificar más su comportamiento. 
+        //TABLA 9.12 Métodos predeterminados de ayuda para construir un Comparator
+
+        /* 
+        Method                                                          Description
+        reversed()                                      Orden inverso del Comparator encadenado.
+
+        thenComparing(function)             Si el comparador anterior devuelve 0, usa este comparador que devuelve un Objeto o que
+                                            se puede convertir automáticamente en uno.
+
+        thenComparingDouble(function)       Si el comparador anterior devuelve 0, usa este comparador que devuelve double. De lo contrario, 
+                                            devuelve el valor del comparador anterior.
+                                            
+        thenComparingInt(function)          Si el comparador anterior devuelve 0, usa este comparador que devuelve int. 
+                                            De lo contrario, devuelve el valor del comparador anterior.
+                            
+        thenComparingLong(function)         Si el comparador anterior devuelve 0, usa este comparador que devuelve un long.
+                                            De lo contrario, devuelve el valor del comparador anterior.
+        */
+
+
     }
 }
